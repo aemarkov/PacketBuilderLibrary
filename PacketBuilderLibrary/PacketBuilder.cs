@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Markov.PacketBuilderLibrary
 {
-    public delegate void PacketReceivedDelegate(object sender, byte[] package);
+    public delegate void PacketReceivedDelegate(object sender, byte[] packet);
 
     /// <summary>
     /// Merge some packet splitted into several packets.
@@ -32,6 +32,12 @@ namespace Markov.PacketBuilderLibrary
         private int _packageLength;
         private byte[] _packageHeder;
 
+        /// <summary>
+        /// Create new PacketBuilder with specific header
+        /// and data length
+        /// </summary>
+        /// <param name="header">Header</param>
+        /// <param name="packageLength">Payload length (without header)</param>
         public PacketBuilder(byte[] header, int packageLength)
         {
             _packageHeder = new byte[header.Length];
